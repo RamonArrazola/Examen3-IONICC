@@ -1,0 +1,33 @@
+<ion-header class="ion-no-border" mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="onClick()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+        Cerrar
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <h1>Que gusto verte de nuevo!</h1>
+
+  <form (ngSubmit)="login(fLogin)" #fLogin="ngForm">
+    <ion-input name="email" type="email" label="Correo" 
+               label-placement="floating" fill="outline" 
+               placeholder="Correo@Dominio.com" mode="md"
+               [(ngModel)]="loginUserData.email" required
+               errorText="Correo Invalido" email>
+    </ion-input>
+    <ion-input name="password" type="password" label="Contraseña" 
+               label-placement="floating" fill="outline" 
+               placeholder="*******" mode="md"
+               [(ngModel)]="loginUserData.password" required>
+      <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+    </ion-input>
+    <ion-button expand="block" type="submit" [disabled]="!fLogin.valid" class="loginButton" mode="ios">Iniciar Sesión</ion-button>
+  </form>
+
+  
+
+</ion-content>

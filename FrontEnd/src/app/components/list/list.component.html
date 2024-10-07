@@ -1,0 +1,48 @@
+<ion-searchbar placeholder="Buscar" [debounce]="250" (ionInput)="onSearchChange($event)" animated mode="ios"></ion-searchbar>
+  
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher> 
+
+<!-- Lista -->
+<ion-list *ngIf="carga">
+    <ion-item-sliding *ngFor="let item of contactos">
+        <ion-item-options side="end">
+            <ion-item-option color="danger" (click)="eliminar(item)">
+                <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+            </ion-item-option>
+            <ion-item-option color="success" expandable (click)="editar()">
+              <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+        <div class="ion-activatable ripple-parent rectangle">
+            <ion-item>
+                <ion-label>
+                    <h2>{{item.nombre}}</h2>
+                    <h3>{{item.telefono}}</h3>
+                    <p>{{item.correo}}</p>
+                </ion-label>
+                 <ion-avatar slot="end">
+                    <img *ngIf="item.img" [src]="item.img" >
+                 </ion-avatar>
+            </ion-item>
+        </div>
+    </ion-item-sliding>
+  </ion-list>
+
+  <!-- Skeleton Text -->
+  <ion-list *ngIf="!carga">
+    <ion-item *ngFor="let item of contactos">
+        <ion-label>
+            <h3>
+                <ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text>
+            </h3>
+            <p>
+                <ion-skeleton-text [animated]="true" style="width: 40%;"></ion-skeleton-text> 
+            </p>
+        </ion-label>
+        <ion-label slot="end" class="ion-text-end text-small">
+            <ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text>
+        </ion-label>
+    </ion-item>
+  </ion-list>

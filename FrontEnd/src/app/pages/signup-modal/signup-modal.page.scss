@@ -1,0 +1,51 @@
+h1{
+    text-align: center;
+    font-weight: bolder;
+    font-size: 3em;
+    margin-top: 0em;
+    margin-bottom: 1em;
+}
+
+ion-toolbar{
+    --background: ##F4F1D0;
+    --color: #FFFF;
+}
+
+ion-input{
+    margin-top: 1em;
+    --ion-color-success: #3A4860;
+}
+
+.sc-ion-input-md-h{
+    --higlight-color-valid: #3A4860 !important;
+}
+
+.loginButton{
+    margin-top: 2em;
+    --background: #3A4860;
+    --color: #FFFF;
+    --color-activated:#3A4860 !important;
+    --background-activated: #FFFF !important;
+}
+
+.avatar-container{
+    display: flex;
+    justify-content: center;
+
+}
+
+:host .avatar{
+    width: 10em !important;
+    height: 100%;
+}
+
+.avatar-btn{
+    position: relative;
+    bottom: 3em;
+    width: 3em;
+    height: 3em;
+    left: 7em;
+    --color: #FFFF;
+    --color-activated:#3A4860 !important;
+    --background-activated: #FFFF !important;
+}

@@ -1,0 +1,42 @@
+<ion-header [translucent]="true" class="ion-no-border ion-margin-top" mode="md">
+  <ion-toolbar>
+    <ion-title class="ion-text-capitalize title">
+      Editar Perfil
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logOut()" fill="clear" shape="round">
+        <ion-icon size="large" name="log-out-outline" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <!-- Refresher -->
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="avatar-container">
+    <ion-avatar class="avatar">
+      <img [src]="UserData.avatar" alt="avatar">
+      <ion-button (click)="avatar()" fill="solid" shape="round" class="avatar-btn">
+        <ion-icon slot="icon-only" name="brush-outline"></ion-icon>
+      </ion-button>
+    </ion-avatar>
+  </div>
+  <form (ngSubmit)="update(fUpdate)" #fUpdate="ngForm">
+    <ion-input name="email" type="email" label="Correo" 
+               label-placement="floating" fill="outline" 
+               [readonly]="true" [value]="UserData.email" mode="md"
+               [(ngModel)]="UserData.email" required
+               email>
+    </ion-input>
+    <ion-input name="nombre" type="nombre" label="Nombre" 
+               label-placement="floating" fill="outline" 
+               placeholder="" mode="md"
+               [(ngModel)]="UserData.password" required>
+    </ion-input>
+    <ion-button expand="block" type="submit" [disabled]="!fUpdate.valid" class="loginButton" mode="ios">Actualizar Información</ion-button>
+  </form>
+  
+</ion-content>

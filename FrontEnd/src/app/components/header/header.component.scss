@@ -1,0 +1,52 @@
+.title{
+    font-size: 30px;
+    text-align: center;
+}
+
+.RegisterModal{
+    filter: blur(0px) !important;
+    -webkit-filter: blur(0px) !important;
+    -moz-filter: blur(0px) !important;
+}
+
+.Mtitle{
+    font-size: 1.2em;
+    text-align: left;
+    font-weight: normal;
+}
+
+.RegisterModal ion-toolbar{
+    --background: ##F4F1D0;
+    --color: #FFFF;
+    margin-top: 0.5em;
+}
+ion-input{
+    margin-top: 0.5em;
+    --ion-color-success: #3A4860;
+}
+
+.sc-ion-input-md-h{
+    --higlight-color-valid: #3A4860 !important;
+}
+
+.avatar-container{
+    display: flex;
+    justify-content: center;
+}
+
+.avatar{
+    width: 10em !important;
+    height: 100%;
+}
+
+
+.avatar-btn{
+    position: relative;
+    bottom: 3em;
+    width: 3em;
+    height: 3em;
+    left: 7em;
+    --color: #FFFF;
+    --color-activated:#3A4860 !important;
+    --background-activated: #FFFF !important;
+}

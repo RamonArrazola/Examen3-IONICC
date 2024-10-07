@@ -1,0 +1,73 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+@import "@ionic/angular/css/palettes/dark.system.css";
+:root {
+	--ion-background-color: #D6D6CD;
+	--ion-background-color-rgb: 214,214,205;
+
+	--ion-text-color: #1C1B1D;
+	--ion-text-color-rgb: 28,27,29;
+
+	--ion-color-step-50: #cdcdc4;
+	--ion-color-step-100: #c3c3bb;
+	--ion-color-step-150: #babab3;
+	--ion-color-step-200: #b1b1aa;
+	--ion-color-step-250: #a8a7a1;
+	--ion-color-step-300: #9e9e98;
+	--ion-color-step-350: #95958f;
+	--ion-color-step-400: #8c8b87;
+	--ion-color-step-450: #82827e;
+	--ion-color-step-500: #797975;
+	--ion-color-step-550: #706f6c;
+	--ion-color-step-600: #666663;
+	--ion-color-step-650: #5d5c5b;
+	--ion-color-step-700: #545352;
+	--ion-color-step-750: #4b4a49;
+	--ion-color-step-800: #414040;
+	--ion-color-step-850: #383737;
+	--ion-color-step-900: #2f2e2f;
+	--ion-color-step-950: #252426;
+
+    --ion-color-primary: rgb(80, 100, 133);
+}
+
+ion-toast{
+	justify-content: center !important;
+	text-align: center !important;
+	--background: #3A4860;
+	color: #FFFF;
+}

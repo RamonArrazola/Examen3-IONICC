@@ -1,0 +1,74 @@
+<ion-header [translucent]="true" class="ion-no-border ion-margin-top" mode="md">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" shape="round" id="openModal">
+        <ion-icon name="add-outline" color="primary" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-capitalize title">
+      {{title}}
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logOut()" fill="clear" shape="round">
+        <ion-icon size="large" name="log-out-outline" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Registrar usuario Modal-->
+<ion-modal
+    trigger="openModal"
+    [initialBreakpoint]="0.5"
+    [breakpoints]="[0.7]"
+    handleBehavior=""
+     #modal>
+    <ng-template class="RegisterModal">
+    <ion-header class="ion-no-border" mode="ios">
+      <ion-toolbar>
+        <ion-title class="Mtitle">Registrar Contacto</ion-title>
+        <ion-buttons slot="start">
+          <ion-button (click)="modal.dismiss()">
+            <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+          <ion-button (click)="Add(form)" [disabled]="!form.valid" [color]="form.touched && form.valid ? 'primary' : 'danger'" >
+            <ion-icon slot="end" name="save-outline"></ion-icon>
+            Guardar
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+      <ion-content class="ion-padding"> 
+        <div class="avatar-container">
+          <ion-avatar class="avatar">
+            <img [src]="ContactData.img" alt="avatar">
+            <ion-button (click)="avatar()" fill="solid" shape="round" class="avatar-btn">
+              <ion-icon slot="icon-only" name="brush-outline"></ion-icon>
+            </ion-button>
+          </ion-avatar>
+        </div>
+        <form (ngSubmit)="Add(form)" #form="ngForm">
+          <ion-input name="name" type="name" label="Nombre" 
+                     label-placement="floating" fill="outline" 
+                     placeholder="John Doe" mode="md"
+                     [(ngModel)]="ContactData.nombre" required>
+          </ion-input>
+          <ion-input name="telefono" type="telefono" label="Telefono" 
+                     label-placement="floating" fill="outline" 
+                     placeholder="474 111 2222" mode="md"
+                     [(ngModel)]="ContactData.telefono" required
+                     errorText="Numero Invalido"  
+                     phone>
+          </ion-input>
+          <ion-input name="correo" type="correo" label="Correo" 
+                     label-placement="floating" fill="outline" 
+                     placeholder="Correo@Dominio.com" mode="md"
+                     [(ngModel)]="ContactData.correo"
+                     errorText="Correo Invalido" email>
+          </ion-input>
+        </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>

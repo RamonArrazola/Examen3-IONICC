@@ -1,0 +1,31 @@
+<!-- <ion-header [translucent]="true" class="ion-no-border">
+  
+</ion-header> -->
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <!-- Logotipo -->
+  <div class="Logo-container">
+    <ion-img src="../../../assets/icon/logo.png" class="Logo"></ion-img>
+  </div>
+  <!-- Bienvenida -->
+  <div>
+    <h1>{{Bienvenida}}</h1>
+    <p>{{Text}}</p>
+  </div>
+  <!-- Opciones de LogIn -->
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button expand="block" shape="round" fill="solid" class="btn" (click)="LogIn()" mode="ios">
+          LogIn
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" shape="round" fill="outline" class="white" (click)="SignUp()" mode="ios">
+          SignUp
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

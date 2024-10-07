@@ -1,0 +1,48 @@
+<ion-header class="ion-no-border" mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="onClick()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+        Cerrar
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <h1>Hola, un gusto conocerte</h1>
+
+  <div class="avatar-container">
+    <ion-avatar class="avatar">
+      <img [src]="signupUserData.avatar" alt="avatar">
+      <ion-button (click)="avatar()" fill="solid" shape="round" class="avatar-btn">
+        <ion-icon slot="icon-only" name="brush-outline"></ion-icon>
+      </ion-button>
+    </ion-avatar>
+  </div>
+
+  <form (ngSubmit)="signUp(fSignUp)" #fSignUp="ngForm">
+    <ion-input name="name" type="name" label="Nombre" 
+               label-placement="floating" fill="outline" 
+               placeholder="John Doe" mode="md"
+               [(ngModel)]="signupUserData.nombre" required>
+    </ion-input>
+    <ion-input name="email" type="email" label="Correo" 
+               label-placement="floating" fill="outline" 
+               placeholder="Correo@Dominio.com" mode="md"
+               [(ngModel)]="signupUserData.email" required
+               errorText="Correo Invalido" email
+              (ionInput)="onChange($event)">
+    </ion-input>
+    <ion-input name="password" type="password" label="Contraseña" 
+               label-placement="floating" fill="outline" 
+               placeholder="*******" mode="md"
+               [(ngModel)]="signupUserData.password" required password>
+      <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+    </ion-input>
+    <ion-button expand="block" type="submit" [disabled]="!fSignUp.valid" class="loginButton" mode="ios">Registrarme</ion-button>
+  </form>
+
+  
+
+</ion-content>
