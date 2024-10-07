@@ -14,9 +14,12 @@
 
   <div class="avatar-container">
     <ion-avatar class="avatar">
-      <img [src]="signupUserData.avatar" alt="avatar">
+      <img *ngIf="!signupUserData.avatar === null" [src]="signupUserData.avatar" alt="avatar">
+      <img *ngIf="signupUserData.avatar === null" [src]="imgPlaceholder" alt="avatar">
       <ion-button (click)="avatar()" fill="solid" shape="round" class="avatar-btn">
-        <ion-icon slot="icon-only" name="brush-outline"></ion-icon>
+        <ion-input type="file" (change)="Cambio($event)" label="">
+          <ion-icon slot="icon-only" name="brush-outline" class="icon"></ion-icon>
+        </ion-input>
       </ion-button>
     </ion-avatar>
   </div>

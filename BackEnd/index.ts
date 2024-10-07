@@ -24,6 +24,7 @@ server.app.use( fileUpload({ useTempFiles: true }) );
 server.app.use( '/user', userRoutes );
 server.app.use('/posts', PostsRoutes);
 
+
 //Conexion a DB 
 mongoose.connect('mongodb://localhost:27017/Examen3', 
     {

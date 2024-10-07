@@ -130,8 +130,12 @@ userRoutes.get('/', [verificaToken], (req: any, res: Response) => {
 
 userRoutes.get('/existe', (req: any, res: Response) => {
     const email = req.query.email;
-        Usuario.find({email: {$regex: email, $options: 'i'}}).then(userDB => {
-        if (userDB) {
+    const emailToSearch = req.query.email.trim(); // Elimina espacios en blanco
+    const escapedEmail = emailToSearch.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'); // Escapa caracteres especiales
+    console.log(email);
+        Usuario.find({email: {$regex: "^" + email + "$", $options: 'i'}}).then(userDB => {
+            console.log(userDB);
+        if (userDB.length > 0) {
             return res.json({
                 ok: true,
                 mensaje: 'El correo ya está registrado'
@@ -144,6 +148,6 @@ userRoutes.get('/existe', (req: any, res: Response) => {
         }
     });
 });
-    
+// Usuario.find({email: {$regex: email, $options: 'i'}}).then(userDB => {
 
 export default userRoutes;

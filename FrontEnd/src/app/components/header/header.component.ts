@@ -21,8 +21,6 @@ export class HeaderComponent {
     telefono: ''
   }
 
- 
-
   constructor(private ui: UiServiceService,
               private contact: ContactServiceService,
               private modalController: ModalController
@@ -45,6 +43,12 @@ export class HeaderComponent {
 
     if (valid){
       this.ui.snackBar(`${this.ContactData.nombre} Agregado a contactos`, 'top');
+      this.ContactData = {
+        nombre: '',
+        correo: '',
+        img: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTukzAjp3NyC_fQDI1YbHpRZ7W3VcZj8G9wjg&s'],
+        telefono: ''
+      };
       this.modalController.dismiss();
       
     } else {

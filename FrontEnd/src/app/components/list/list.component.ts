@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, HostListener } from '@angular/core';
 import { Post } from '../../interfaces/index';
 import { ContactServiceService } from 'src/app/services/contact-service.service';
 import { UiServiceService } from 'src/app/services/ui-service.service';
@@ -12,6 +12,10 @@ export class ListComponent  implements OnInit {
 
   @Input() contactos: Post[] = [];
   @Input() carga: boolean = false;
+  @HostListener('window:beforeunload', ['$event'])
+  unloadNotification($event: any) {
+    this.ngOnInit();
+  }
 
   page = 0;
   busqueda: string = '';
@@ -28,7 +32,6 @@ export class ListComponent  implements OnInit {
       this.carga = true;
     }, 2000);
   }
-
   editar(){
 
   }
@@ -42,8 +45,6 @@ export class ListComponent  implements OnInit {
         this.contactos = [...this.contactos, ...resp];
       });
     }, 100);
-      
-      
   }
 
   
