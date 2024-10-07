@@ -12,10 +12,8 @@ import { UiServiceService } from '../../services/ui-service.service';
 export class LoginModalPage{
 
   loginUserData = {
-    email: 'test1@test.com',
-    password: 'asdasd'
-    // email: '',
-    // password: ''
+    email: '',
+    password: ''
   }
 
   constructor(private modalController: ModalController,

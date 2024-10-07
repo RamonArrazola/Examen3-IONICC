@@ -15,10 +15,10 @@ export class HeaderComponent {
   @Input() title: string = '';
 
   public ContactData: Post = {
-    nombre: 'pepe',
-    correo: 'pepe@pepe.com',
+    nombre: '',
+    correo: '',
     img: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTukzAjp3NyC_fQDI1YbHpRZ7W3VcZj8G9wjg&s'],
-    telefono: '4741274995'
+    telefono: ''
   }
 
  
