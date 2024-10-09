@@ -1,0 +1,325 @@
+{
+	"info": {
+		"_postman_id": "28ff7393-648c-40ed-9f14-bb7bf3427f55",
+		"name": "Examen 3 (2.0)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38701543"
+	},
+	"item": [
+		{
+			"name": "SignUp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "test2",
+							"type": "text"
+						},
+						{
+							"key": "avatar",
+							"type": "file",
+							"src": "/C:/Users/jarrazola/Pictures/imagen1.jpeg"
+						},
+						{
+							"key": "email",
+							"value": "test2@test.com",
+							"type": "text"
+						},
+						{
+							"key": "pass",
+							"value": "test2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/user/create",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Usuario",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7Il9pZCI6IjY3MDY2ZTViYzU2MTYzMmJmOWNhYzAyMCIsIm5vbWJyZSI6ImF2YXRhciIsImVtYWlsIjoiYXZhdGFyQGF2YXRhci5jb20iLCJhdmF0YXIiOiJ1cGxvYWRzXFwyOWI1MTcyMS02MWNjLTRkNDQtOTcwZS05OGI3YzAwODI4NmMuanBnIn0sImlhdCI6MTcyODQ3NDcxNSwiZXhwIjoxNzMxMDY2NzE1fQ.yL-vmJ9bc51IczoaTbEQn5yRaTBLlH4BEgVHy6CYP4U",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "avatar@avatar.com",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "snake",
+							"type": "text"
+						},
+						{
+							"key": "avatar",
+							"type": "file",
+							"src": "/C:/Users/jarrazola/Pictures/imagen1.jpeg"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/user/update",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busca Contactos por Nombre",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7Il9pZCI6IjY3MDY2ZTViYzU2MTYzMmJmOWNhYzAyMCIsIm5vbWJyZSI6InRlc3RlYW5kaW8iLCJlbWFpbCI6ImF2YXRhckBhdmF0YXIuY29tIiwiYXZhdGFyIjoidXBsb2Fkc1xcODEwZTgyNDgtNjU3NC00NzAxLWFhNWUtNDM4MzQwOTkwZTUyLmpwZWcifSwiaWF0IjoxNzI4NDk2MDEzLCJleHAiOjE3MzEwODgwMTN9.cwoaOlqV50cVjOZZft0qbAtnFzUxvcq0XKAloVojI7M",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/post/test22",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"post",
+						"test22"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear contacto",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7Il9pZCI6IjY3MDY2ZTViYzU2MTYzMmJmOWNhYzAyMCIsIm5vbWJyZSI6InRlc3RlYW5kaW8iLCJlbWFpbCI6ImF2YXRhckBhdmF0YXIuY29tIiwiYXZhdGFyIjoidXBsb2Fkc1xcODEwZTgyNDgtNjU3NC00NzAxLWFhNWUtNDM4MzQwOTkwZTUyLmpwZWcifSwiaWF0IjoxNzI4NDk2MDEzLCJleHAiOjE3MzEwODgwMTN9.cwoaOlqV50cVjOZZft0qbAtnFzUxvcq0XKAloVojI7M",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "snake",
+							"type": "text"
+						},
+						{
+							"key": "correo",
+							"value": "mgs@konami.com",
+							"type": "text"
+						},
+						{
+							"key": "img",
+							"type": "file",
+							"src": "/C:/Users/jarrazola/Pictures/images.jpg"
+						},
+						{
+							"key": "telefono",
+							"value": "244 156 8964",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/post/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"post",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LogIn",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"avatar@avatar.com\",\r\n    \"password\":\"avatar\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/user/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Valida disponibilidad de correo",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "avatar@avatar.com",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/user/existe?email=correo@dominio.com",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"existe"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "correo@dominio.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtiene Inf de Usuario por Token",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7Il9pZCI6IjY3MDY2ZTViYzU2MTYzMmJmOWNhYzAyMCIsIm5vbWJyZSI6InRlc3RlYW5kaW8iLCJlbWFpbCI6ImF2YXRhckBhdmF0YXIuY29tIiwiYXZhdGFyIjoidXBsb2Fkc1xcODEwZTgyNDgtNjU3NC00NzAxLWFhNWUtNDM4MzQwOTkwZTUyLmpwZWcifSwiaWF0IjoxNzI4NDk2MDEzLCJleHAiOjE3MzEwODgwMTN9.cwoaOlqV50cVjOZZft0qbAtnFzUxvcq0XKAloVojI7M",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/user",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar contactos por token",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7Il9pZCI6IjY3MDY2ZTViYzU2MTYzMmJmOWNhYzAyMCIsIm5vbWJyZSI6InRlc3RlYW5kaW8iLCJlbWFpbCI6ImF2YXRhckBhdmF0YXIuY29tIiwiYXZhdGFyIjoidXBsb2Fkc1xcODEwZTgyNDgtNjU3NC00NzAxLWFhNWUtNDM4MzQwOTkwZTUyLmpwZWcifSwiaWF0IjoxNzI4NDk2MDEzLCJleHAiOjE3MzEwODgwMTN9.cwoaOlqV50cVjOZZft0qbAtnFzUxvcq0XKAloVojI7M",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/post",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Elimina Contacto por ID",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7Il9pZCI6IjY3MDY2ZTViYzU2MTYzMmJmOWNhYzAyMCIsIm5vbWJyZSI6InRlc3RlYW5kaW8iLCJlbWFpbCI6ImF2YXRhckBhdmF0YXIuY29tIiwiYXZhdGFyIjoidXBsb2Fkc1xcODEwZTgyNDgtNjU3NC00NzAxLWFhNWUtNDM4MzQwOTkwZTUyLmpwZWcifSwiaWF0IjoxNzI4NDk2MDEzLCJleHAiOjE3MzEwODgwMTN9.cwoaOlqV50cVjOZZft0qbAtnFzUxvcq0XKAloVojI7M",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/post/67067795a50f662277a62167",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"post",
+						"67067795a50f662277a62167"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
