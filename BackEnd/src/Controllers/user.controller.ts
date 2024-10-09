@@ -126,7 +126,7 @@ export async function obtieneData(req: any, res: Response){
 export async function validaEmail (req: Request, res: Response){
     const email = req.query.email;                                      //Obtenemos el email desde la peticion
     await Usuario.findOne({email: { $regex: email, $options: 'i'}}).then((userDB: any) => {
-        if(userDB.length > 0){
+        if(userDB){
             return res.json({
                 ok: false,
                 message: 'Email ya registrado'
