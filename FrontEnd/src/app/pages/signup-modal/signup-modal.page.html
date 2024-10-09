@@ -14,18 +14,18 @@
 
   <div class="avatar-container">
     <ion-avatar class="avatar">
-      <img *ngIf="!signupUserData.avatar === null" [src]="signupUserData.avatar" alt="avatar">
+      <img *ngIf="avatarPreview" [src]="avatarPreview" alt="avatar">
       <img *ngIf="signupUserData.avatar === null" [src]="imgPlaceholder" alt="avatar">
-      <ion-button (click)="avatar()" fill="solid" shape="round" class="avatar-btn">
-        <ion-input type="file" (change)="Cambio($event)" label="">
-          <ion-icon slot="icon-only" name="brush-outline" class="icon"></ion-icon>
+      <ion-button fill="solid" shape="round" class="avatar-btn" id="avatar-trigger">
+        <ion-input type="file" (change)="Cambio($event)" class="ghost" id="avatar-btn"> 
         </ion-input>
+        <ion-icon slot="icon-only" name="brush-outline" class="icon"></ion-icon>
       </ion-button>
     </ion-avatar>
   </div>
 
   <form (ngSubmit)="signUp(fSignUp)" #fSignUp="ngForm">
-    <ion-input name="name" type="name" label="Nombre" 
+    <ion-input name="nombre" type="name" label="Nombre" 
                label-placement="floating" fill="outline" 
                placeholder="John Doe" mode="md"
                [(ngModel)]="signupUserData.nombre" required>
@@ -37,7 +37,7 @@
                errorText="Correo Invalido" email
               (ionInput)="onChange($event)">
     </ion-input>
-    <ion-input name="password" type="password" label="Contraseña" 
+    <ion-input name="pass" type="password" label="Contraseña" 
                label-placement="floating" fill="outline" 
                placeholder="*******" mode="md"
                [(ngModel)]="signupUserData.password" required password>
@@ -45,7 +45,4 @@
     </ion-input>
     <ion-button expand="block" type="submit" [disabled]="!fSignUp.valid" class="loginButton" mode="ios">Registrarme</ion-button>
   </form>
-
-  
-
 </ion-content>

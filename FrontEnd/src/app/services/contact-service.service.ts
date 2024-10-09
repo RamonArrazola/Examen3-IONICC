@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Post, PostResponse, Posts, PostPage, PostSearch } from '../interfaces/index';
+import { Post, ContactResponse, Contact, ContactSearch } from '../interfaces/index';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 import { environment } from 'src/environments/environment';
@@ -14,10 +14,14 @@ const URL = environment.url;
 export class ContactServiceService {
 
   token: string = '';
-  private PostPage: PostPage = {};
-  private PostSearch: PostSearch = {
+  private ContactS: ContactSearch = {
     ok: false,
-    post: []
+    contact: []
+  }
+  private ContactR: ContactResponse = {
+    ok: false,
+    message: '',
+    contacts: []
   };
 
   constructor(private http: HttpClient,
@@ -36,13 +40,21 @@ export class ContactServiceService {
   }
 
 
-  async AddContacto(data: Post){
+  async AddContacto(data: Contact){
     await this.cargarToken();
     const headers = new HttpHeaders({
       'x-token': this.token
     });
+
+    const formData = new FormData();
+
+    formData.append('nombre', data.nombre);
+    data.telefono ? formData.append('telefono', data.telefono) : null;
+    data.correo ? formData.append('correo', data.correo) : null;
+    formData.append('img', data.img);
+
     return new Promise(resolve => {
-      this.http.post<Post>(`${URL}/posts/`, data, {headers})
+      this.http.post<Post>(`${URL}/post/`, formData, {headers})
       .subscribe((resp: any) => {
         console.log(resp);
         resolve(resp);
@@ -50,43 +62,30 @@ export class ContactServiceService {
     });
   }
 
-  ConsultaContacto(busqueda: string):Observable<Post[]>{
+  ConsultaContacto(busqueda: string):Observable<Contact[]>{
     this.cargarToken();
-    console.log(this.token);
-    
-    const page = 1;
 
-    return this.Query<PostSearch>(`/posts/busca?nombre=${busqueda}`).pipe(
+    return this.Query<ContactSearch>(`/post/${busqueda}`).pipe(
       map((resp) => {
-        this.PostSearch = {
+        this.ContactS = {
           ok: resp.ok,
-          post: resp.post
+          contact: resp.contact
         };
-        return this.PostSearch.post;
+        return this.ContactS.contact;
       })
     );
   }
 
-  ObtenerContactos(page: any): Observable<Post[]>{
+  ObtenerContactos(): Observable<Contact[]>{
     this.cargarToken();
+    console.log(this.token);
 
-      this.PostPage[page] = {
-        page: 0,
-        posts: []
-      }
-
-    const pagina = this.PostPage[page].page + 1;
-
-    return this.Query<PostResponse>('/posts/').pipe(
-      map((posts) => {
-
-        if(posts.posts.length === 0){ return this.PostPage[page].posts; }
-
-        this.PostPage[page] = {
-          page: pagina,
-          posts: [...this.PostPage[page].posts, ...posts.posts]
-        }
-        return this.PostPage[page].posts;
+    return this.Query<ContactResponse>('/post/').pipe(
+      map((res) => {
+        if(res.contacts.length === 0){ 
+          return this.ContactR.contacts; 
+        } 
+        return this.ContactR.contacts = res.contacts;
       })
     );
   }
@@ -113,9 +112,8 @@ export class ContactServiceService {
     });
 
     return new Promise(resolve => {
-      this.http.delete<Post>(`${URL}/posts/delete?id=${id}`, {headers})
+      this.http.delete<Post>(`${URL}/post/${id}`, {headers})
       .subscribe((resp: any) => {
-        console.log(resp);
         resolve(resp);
       });
     });

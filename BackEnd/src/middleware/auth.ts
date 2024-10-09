@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import Token from '../classes/token';
-import { Usuario } from '../models/user.model';
+import Token from '../Classes/token';
+import  Usuario  from '../Models/User.model';
 
 export const verificaToken = (req: any, res: Response, next: NextFunction) => {
 

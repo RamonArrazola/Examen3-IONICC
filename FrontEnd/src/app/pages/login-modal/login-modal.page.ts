@@ -12,8 +12,8 @@ import { UiServiceService } from '../../services/ui-service.service';
 export class LoginModalPage{
 
   loginUserData = {
-    email: '',
-    password: ''
+    email: 'avatar@avatar.com',
+    password: 'avatar'
   }
 
   constructor(private modalController: ModalController,
@@ -35,7 +35,7 @@ export class LoginModalPage{
 
     if(valido){
       // navegar al tabs
-      this.ctrl.navigateRoot('/main/tabs/tab1', {animated: true});
+      // this.ctrl.navigateRoot('/main/tabs/tab1', {animated: true});
       this.modalController.dismiss();
     } else {
       // Alerta de inicio de sesion incorrecto

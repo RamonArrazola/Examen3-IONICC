@@ -16,14 +16,20 @@
   <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
+
+  <!-- Contenido de la página -->
   <div class="avatar-container">
     <ion-avatar class="avatar">
-      <img [src]="UserData.avatar" alt="avatar">
-      <ion-button (click)="avatar()" fill="solid" shape="round" class="avatar-btn">
+      <img *ngIf="avatarPreview" [src]="avatarPreview" alt="avatar">
+      <img *ngIf="!avatarPreview"  [src]="this.imgAvt" alt="avatar">
+      <ion-button fill="solid" shape="round" class="avatar-btn" id="avatar-trigger">
+        <ion-input type="file" (change)="Cambio($event)" class="ghost" id="avatar-btn"> 
+        </ion-input>
         <ion-icon slot="icon-only" name="brush-outline"></ion-icon>
       </ion-button>
     </ion-avatar>
   </div>
+
   <form (ngSubmit)="update(fUpdate)" #fUpdate="ngForm">
     <ion-input name="email" type="email" label="Correo" 
                label-placement="floating" fill="outline" 

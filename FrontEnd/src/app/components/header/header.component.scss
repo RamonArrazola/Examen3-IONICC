@@ -50,3 +50,7 @@ ion-input{
     --color-activated:#3A4860 !important;
     --background-activated: #FFFF !important;
 }
+.ghost{
+    position: fixed;
+    color: rgba(255, 255, 255, 0.0);
+}

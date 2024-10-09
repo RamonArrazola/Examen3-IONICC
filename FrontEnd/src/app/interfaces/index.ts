@@ -12,9 +12,19 @@ export interface Usuario {
 }
 
 export interface ContactResponse {
-    ok:     boolean;
-    pagina: number;
-    posts:  Post[];
+    ok:       boolean;
+    message:  string;
+    contacts: Contact[];
+}
+
+export interface Contact {
+    _id?:      string;
+    nombre:   string;
+    telefono: string;
+    img?:      any;
+    correo?:   string;
+    usuario?:  string;
+    __v?:      number;
 }
 
 export interface Posts {
@@ -29,7 +39,7 @@ export interface PostPage {
 
 export interface PostResponse {
     ok:     boolean;
-    pagina: number;
+    mensaje: string;
     posts:  Post[];
 }
 
@@ -37,7 +47,7 @@ export interface Post {
     _id?:       string;
     nombre:    string;
     telefono?: string;
-    img?:       any[];
+    img?:       any;
     correo?:   string;
     usuario?:   Usuario;
     __v?:       number;
@@ -48,5 +58,9 @@ export interface PostSearch {
     post: Post[];
 }
 
+export interface ContactSearch {
+    ok: boolean;
+    contact: Contact[];
+}
 
 

@@ -43,8 +43,11 @@
       <ion-content class="ion-padding"> 
         <div class="avatar-container">
           <ion-avatar class="avatar">
-            <img [src]="ContactData.img" alt="avatar">
-            <ion-button (click)="avatar()" fill="solid" shape="round" class="avatar-btn">
+            <img *ngIf="avatarPreview" [src]="avatarPreview" alt="avatar">
+            <img *ngIf="!avatarPreview" [src]="imgPlaceholder" alt="avatar">
+            <ion-button fill="solid" shape="round" class="avatar-btn">
+              <ion-input type="file" (change)="Cambio($event)" class="ghost" id="avatar-btn"> 
+              </ion-input>
               <ion-icon slot="icon-only" name="brush-outline"></ion-icon>
             </ion-button>
           </ion-avatar>

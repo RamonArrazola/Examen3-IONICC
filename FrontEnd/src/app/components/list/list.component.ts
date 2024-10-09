@@ -1,7 +1,9 @@
-import { Component, Input, OnInit, HostListener } from '@angular/core';
-import { Post } from '../../interfaces/index';
+import { Component, Input, OnInit } from '@angular/core';
+import { Contact } from '../../interfaces/index';
 import { ContactServiceService } from 'src/app/services/contact-service.service';
 import { UiServiceService } from 'src/app/services/ui-service.service';
+import { ModalController } from '@ionic/angular';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-list',
@@ -10,28 +12,27 @@ import { UiServiceService } from 'src/app/services/ui-service.service';
 })
 export class ListComponent  implements OnInit {
 
-  @Input() contactos: Post[] = [];
+  @Input() contactos: Contact[] = [];
   @Input() carga: boolean = false;
-  @HostListener('window:beforeunload', ['$event'])
-  unloadNotification($event: any) {
-    this.ngOnInit();
-  }
+  // @HostListener('window:beforeunload', ['$event'])
+  // unloadNotification($event: any) {
+  //   this.ngOnInit();
+  // }
 
-  page = 0;
+  imgT: string = 'http://localhost:3000/'
   busqueda: string = '';
 
   constructor(private consulta: ContactServiceService,
-              private ui: UiServiceService) { }
+              private ui: UiServiceService,
+              private modalController: ModalController) { }
 
   ngOnInit() {
-    this.consulta.ObtenerContactos(this.page).subscribe((resp) =>{
-      this.contactos = [...this.contactos, ...resp];
-    });
-
+    this.obtenerContactos();
     setTimeout(() => {
       this.carga = true;
-    }, 2000);
+    }, 800);
   }
+
   editar(){
 
   }
@@ -40,20 +41,14 @@ export class ListComponent  implements OnInit {
     this.consulta.DeleteContacto(item._id);
     this.ui.snackBar('Contacto eliminado', 'top');
     setTimeout(() => {
-      this.consulta.ObtenerContactos(this.page).subscribe((resp) =>{
-        this.contactos = [];
-        this.contactos = [...this.contactos, ...resp];
-      });
+      this.obtenerContactos();
     }, 100);
   }
 
   
   handleRefresh(event: Event) {
     setTimeout(() => {
-      this.consulta.ObtenerContactos(this.page).subscribe((resp) =>{
-        this.contactos = [];
-        this.contactos = [...this.contactos, ...resp];
-      });
+      this.obtenerContactos();
       if (event.target) {
         (event.target as any).complete();
       }
@@ -67,9 +62,15 @@ export class ListComponent  implements OnInit {
     } else{
       this.busqueda = event.detail.value;
     }
-    this.consulta.ConsultaContacto(this.busqueda).subscribe((search: Post[]) => {
+    this.consulta.ConsultaContacto(this.busqueda).subscribe((search: Contact[]) => {
       this.contactos = [...search];
     });
   }
 
+  obtenerContactos(){
+    this.consulta.ObtenerContactos().subscribe((resp) =>{
+      this.contactos = [];
+      this.contactos = [...this.contactos, ...resp];
+    });
+  }
 }

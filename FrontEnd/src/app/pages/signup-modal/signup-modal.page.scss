@@ -48,4 +48,9 @@ ion-input{
     --color: #FFFF;
     --color-activated:#3A4860 !important;
     --background-activated: #FFFF !important;
+    overflow: hidden;
+}
+.ghost{
+    position: fixed;
+    color: rgba(255, 255, 255, 0.0);
 }

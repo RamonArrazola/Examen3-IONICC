@@ -7,8 +7,7 @@ const usuarioSchema = new Schema({
         required: [true, 'El nombre es necesario']
     },
     avatar: {
-        type: String,
-        default: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTukzAjp3NyC_fQDI1YbHpRZ7W3VcZj8G9wjg&s'
+        type: String
     },
     email: {
         type: String,
@@ -38,4 +37,4 @@ interface IUsuario extends Document{
     comparrPass(password: string): boolean; //comparrPass
 }
 
-export const Usuario = model<IUsuario>('Usuario', usuarioSchema);
+export default model<IUsuario>('Usuario', usuarioSchema);

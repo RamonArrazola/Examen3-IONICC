@@ -1,11 +1,12 @@
 import { Component} from '@angular/core';
+import { Capacitor } from '@capacitor/core';
+
 import { NgForm } from '@angular/forms';
 import { ModalController, NavController } from '@ionic/angular';
+
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { UiServiceService } from '../../services/ui-service.service';
 import { Usuario } from 'src/app/interfaces';
-// import { Capacitor, Filesystem } from '@capacitor/filesystem';
-
 
 @Component({
   selector: 'app-signup-modal',
@@ -22,6 +23,8 @@ export class SignupModalPage{
   }
 
   imgPlaceholder: string = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTukzAjp3NyC_fQDI1YbHpRZ7W3VcZj8G9wjg&s';
+  avatarPreview: string | ArrayBuffer | null = null; // Elemento para almacenar la vista previa del avatar
+  TempImg = '';
 
   onFileSelected(event: any) {
 
@@ -75,23 +78,60 @@ export class SignupModalPage{
     }
   }
 
-  avatar(){
-    // const options: CameraOptions = {
-
-    // }
-  };
-
   async Cambio(event: any){
-    const file: File = event.target.files[0];
-    if (file) {
-      this.signupUserData.avatar = file;
-      const directory = 'data';
-      const filePath = `${directory}/${Date.now()}_${file.name}`;
-      // await Filesystem.writeFile({
-      //   path: filePath,
-        // data: this.selectedFile,
-        // directory: FilesystemDirectory.Data
-      // });
+    if(event.target && event.target.files && event.target.files.length > 0){
+      const file: File = event.target.files[0];
+      console.log(file);
+      if (file) {
+        this.signupUserData.avatar = file;
+        // await this.guardarImagen(file);
+        await this.actualizarVistaPrevia(file);
+      }
+    } else {
+      console.error('No file selected');
     }
+  }
+
+  // async guardarImagen(file: File) {
+  //     const uniqueFileName = new Date().getTime() + '_' + file.name;
+    
+  //     const savedFile = await Filesystem.writeFile({
+  //       path: uniqueFileName,
+  //       data: await this.convertFileToBase64(file),
+  //       directory: FilesystemDirectory.Data,
+  //       recursive: true
+  //     });
+  //     this.TempImg = uniqueFileName;
+    
+  // }
+
+  // async leerArchivo(filePath: string) {
+  //   try {
+  //     const contents = await Filesystem.readFile({
+  //       path: filePath,
+  //       directory: FilesystemDirectory.Data,
+  //       encoding: FilesystemEncoding.UTF8
+  //     });
+  //     console.log('File contents:', contents.data);
+  //   } catch (e) {
+  //     console.error('Unable to read file', e);
+  //   }
+  // }
+
+  // private async convertFileToBase64(file: File): Promise<string> {
+  //   return new Promise<string>((resolve, reject) => {
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(file);
+  //     reader.onload = () => resolve(reader.result as string);
+  //     reader.onerror = error => reject(error);
+  //   });
+  // }
+
+  private async actualizarVistaPrevia(file: File) {
+    const reader = new FileReader(); 
+    reader.onload = () => {
+      this.avatarPreview = reader.result;
+    }; 
+    reader.readAsDataURL(file);
   }
 }

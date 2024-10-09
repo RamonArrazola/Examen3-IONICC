@@ -11,7 +11,7 @@
             <ion-item-option color="danger" (click)="eliminar(item)">
                 <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
             </ion-item-option>
-            <ion-item-option color="success" expandable (click)="editar()">
+            <ion-item-option color="success" expandable>
               <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
           </ion-item-option>
         </ion-item-options>
@@ -23,7 +23,7 @@
                     <p>{{item.correo}}</p>
                 </ion-label>
                  <ion-avatar slot="end">
-                    <img *ngIf="item.img" [src]="item.img" >
+                    <img *ngIf="item.img" [src]="imgT + item.img">
                  </ion-avatar>
             </ion-item>
         </div>

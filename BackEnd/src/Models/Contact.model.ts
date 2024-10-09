@@ -1,16 +1,18 @@
 import { Schema, Document, model}from 'mongoose'; 
 
-const postSchema = new Schema({
+const ContactSchema = new Schema({
 
     nombre: {
         type: String
     },
     telefono: {
+        type: String,
+        unique: true,
+        required: [true, 'El telefono es necesario']
+    },
+    img: {
         type: String
     },
-    img: [{
-        type: String,
-    }],
     correo: {
         type: String
     }, 
@@ -25,9 +27,9 @@ const postSchema = new Schema({
 interface IPost extends Document {
     nombre: string;
     telefono: string;
-    img: string[];
+    img: string;
     correo: string;
     usuario: string;
 };
 
-export const Post = model<IPost>('Post', postSchema);
+export default model<IPost>('Post', ContactSchema);
